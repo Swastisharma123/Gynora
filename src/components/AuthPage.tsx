@@ -82,9 +82,9 @@ const AuthPage = ({ onBack }: AuthPageProps) => {
           
           <div className="w-20 h-20 gradient-rose rounded-3xl mx-auto mb-4 flex items-center justify-center shadow-lg">
             <img 
-              src="/placeholder.svg" 
+              src="images/favicon.png" 
               alt="GYNORA Logo" 
-              className="w-12 h-12 rounded-2xl"
+              className="w-20 h-20 rounded-2xl"
             />
           </div>
           <h1 className="text-3xl font-bold text-gradient mb-2">Welcome to GYNORA</h1>

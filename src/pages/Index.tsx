@@ -40,9 +40,9 @@ const AppContent = () => {
         <div className="text-center max-w-md">
           <div className="w-24 h-24 gradient-rose rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-xl">
             <img 
-              src="/placeholder.svg" 
+              src="images/favicon.png" 
               alt="GYNORA Logo" 
-              className="w-14 h-14 rounded-2xl"
+              className="w-24 h-24 rounded-2xl"
             />
           </div>
           <h1 className="text-4xl font-bold text-gradient mb-4">Welcome to GYNORA</h1>
