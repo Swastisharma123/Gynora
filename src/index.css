@@ -1,0 +1,93 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Feminine wellness app color palette and gradients */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 310 90% 70%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 320 60% 85%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 310 90% 70%;
+
+    --radius: 0.8rem;
+
+    /* Custom wellness colors */
+    --pink-soft: 330 80% 90%;
+    --purple-soft: 270 60% 85%;
+    --teal-soft: 180 60% 80%;
+    --rose-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --wellness-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gentle-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-pink-50 via-purple-50 to-teal-50 text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-rose {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+  
+  .gradient-wellness {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .gradient-gentle {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  }
+  
+  .gradient-teal {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+  }
+  
+  .card-glow {
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease;
+}
