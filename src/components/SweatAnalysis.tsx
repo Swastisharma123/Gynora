@@ -11,33 +11,42 @@ import { supabase } from '@/lib/supabase';
 
 const calculatePCOSRiskPercentage = (glucose: string, ph: string, cortisol: string, salt:string) => {
   let score = 0;
-  let maxScore = 30;
+  // let maxScore = 30;
 
-  if (glucose.toLowerCase().includes("dark") || glucose.toLowerCase().includes("high")) {
-    score += 10;
-  } else if (glucose.toLowerCase().includes("moderate")) {
-    score += 5;
+  if (glucose.toLowerCase().includes("Dark Blue", "Strong", "Dark Brown") || glucose.toLowerCase().includes("high")) {
+    score += 3;
+  } else if (glucose.toLowerCase().includes("Light Brown", "Light Blue")|| glucose.toLowerCase().includes("moderate")) {
+    score += 2;
+  } else if (glucose.toLowerCase().includes("No colour", "Light")|| glucose.toLowerCase().includes("neutral")) {
+    score += 1;
   }
+  
 
   if (ph.toLowerCase().includes("purple") || ph.toLowerCase().includes("alkaline")) {
-    score += 10;
+    score += 3;
+  } else if (ph.toLowerCase().includes("red","orange") || ph.toLowerCase().includes("acidic")) {
+    score += 2;
   } else if (ph.toLowerCase().includes("neutral") || ph.toLowerCase().includes("green")) {
-    score += 5;
+    score += 0;
   }
 
-  if (cortisol.toLowerCase().includes("dark") || cortisol.toLowerCase().includes("high")) {
-    score += 10;
-  } else if (cortisol.toLowerCase().includes("faint") || cortisol.toLowerCase().includes("moderate")) {
-    score += 5;
+  if (cortisol.toLowerCase().includes("faded", "No colour") || cortisol.toLowerCase().includes("high")) {
+    score += 3;
+  } else if (cortisol.toLowerCase().includes("Light Brown") || cortisol.toLowerCase().includes("moderate")) {
+    score += 2;
+  } else if (cortisol.toLowerCase().includes("Dark Brown") || cortisol.toLowerCase().includes("normal")) {
+    score += 1;
   }
 
-  if (salt.toLowerCase().includes("yellow", "light") || salt.toLowerCase().includes("high")) {
-    score += 10;
-  } else if (salt.toLowerCase().includes("dark yellow", "light brown") || salt.toLowerCase().includes("moderate")) {
-    score += 5;
+  if (salt.toLowerCase().includes("cloud", "crystals") || salt.toLowerCase().includes("high")) {
+    score += 3;
+  } else if (salt.toLowerCase().includes("blurry", "slight turbidity") || salt.toLowerCase().includes("moderate")) {
+    score += 2;
+  } else if (salt.toLowerCase().includes("clear", "no colour") || salt.toLowerCase().includes("normal")) {
+    score += 0;
   }
 
-  return Math.round((score / maxScore) * 100);
+  return Math.round((score / 10) * 100);
 };
 
 const SweatAnalysis = () => {
@@ -130,6 +139,14 @@ Give a detailed analysis of what this may mean. Then suggest 4-5 personalized ti
         </div>
         <h2 className="text-2xl font-bold text-gradient">Sweat Analysis</h2>
         <p className="text-gray-600">Log your DIY strip result to get PCOS insights</p>
+        <a
+  href="https://drive.google.com/file/d/1NsiOcFGK-1Lj9qBSwivIWln9QgM8MnHf/view?usp=sharing"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-blue-600 italic underline"
+>
+  Gynora Sweat Analysis Manual
+</a>
       </div>
 
       <Card className="p-6 space-y-4">
@@ -163,7 +180,7 @@ Give a detailed analysis of what this may mean. Then suggest 4-5 personalized ti
         <div>
           <label className="block font-medium mb-1">Salt Zone Result</label>
           <Input
-  placeholder="e.g., Light Brown, Yellow ,Dark"
+  placeholder="e.g., Light Brown, Yellow, Dark"
   value={salt}
   onChange={(e) => setSalt(e.target.value)}
 />
